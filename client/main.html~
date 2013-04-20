@@ -1,5 +1,6 @@
 <head>
-
+<script src='helpers/mapbox.js'></script>
+  <link href='stylesheets/mapbox.css' rel='stylesheet' />
   <title>HNMap</title>
 </head>
 <body>
