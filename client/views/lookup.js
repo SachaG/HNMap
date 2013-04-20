@@ -13,7 +13,11 @@ var updateUserLocation = function(lng, lat){
     "profile.feature": feature
   }});  
 }
-
+Template.lookup.rendered=function() {
+  if(navigator.geolocation) {
+    $(".geolocation").show();
+  }
+}
 Template.lookup.events({
   "click .lookup":function(event){
     Meteor.http.call("GET", "http://maps.googleapis.com/maps/api/geocode/json?address="+$("#lookup_address").val()+"&sensor=false",
