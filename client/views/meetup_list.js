@@ -32,7 +32,7 @@ Template.meetupList.rendered = function(){
   interaction.formatter(function(feature) {
       var o = '<a target="_blank" href="' + feature.properties.url + '">' +
           '<h2 class="titleh2">' + feature.properties.city + '</h2>' +
-          '</a>' ;
+          '</a>';
 
       return o;
   });
