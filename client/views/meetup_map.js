@@ -1,4 +1,13 @@
+Template.meetupMap.helpers({
+  meetups: function(){
+    return Meetups.find();
+  }
+})
+
 Template.meetupMap.rendered = function(){
+  if(Session.get("meetupsLoaded")){
+    console.log(Session.get("meetupsLoaded"))
+  console.log(Meetups.find().fetch())
   var meetupLocations = _.pluck(Meetups.find().fetch(), 'feature');
 
   // reverse coordinates so that MapBox is happy
@@ -55,4 +64,5 @@ Template.meetupMap.rendered = function(){
 
   // Attribute map
   map.ui.attribution.add().content('<a href="http://mapbox.com/about/maps">Terms &amp; Feedback</a>');
+  }
 };
