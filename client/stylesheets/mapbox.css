@@ -92,14 +92,14 @@
   }
 
 .zoomin {
-  background-position:-31px -1px;
-  left:39px;
+  background-position:-24px 5px;
+  left:74px;
   -webkit-border-radius:0 3px 3px 0;
           border-radius:0 3px 3px 0;
   }
 
 .zoomout {
-  background-position:-61px -1px;
+  background-position:-54px 5px;
   -webkit-border-radius:3px 0 0 3px;
           border-radius:3px 0 0 3px;
   }
