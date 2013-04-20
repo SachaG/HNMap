@@ -8,10 +8,20 @@ Template.meetupSubmit.events({
     }
 
     Meteor.http.call("GET", "http://maps.googleapis.com/maps/api/geocode/json?address="+meetup.city+","+meetup.country+"&sensor=false", function(error,result){
-      console.log(result.data.results[0].geometry.location);
-      meetup.location = result.data.results[0].geometry.location;
-      meetup.loc = [result.data.results[0].geometry.location.lng, result.data.results[0].geometry.location.lat];
-      console.log(meetup)
+      var lat = result.data.results[0].geometry.location.lat;
+      var lng = result.data.results[0].geometry.location.lng;
+      meetup.feature = {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [lat, lng]
+        },
+        "properties": {
+            "url": meetup.url,
+            "city": meetup.city
+        }
+      }
+      meetup.loc = [lat, lng];
+
       Meetups.insert(meetup);
     });
 
