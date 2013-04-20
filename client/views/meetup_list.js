@@ -14,8 +14,10 @@ Template.meetupList.rendered = function(){
   // reverse coordinates so that MapBox is happy
   _.each(features, function(feature){
     feature.geometry.coordinates = feature.geometry.coordinates.reverse();
+    feature.properties["marker-size"] = "medium";
+    feature.properties["marker-color"] = "#f44";
   });
-  
+
   // Create map
   var map = mapbox.map('map');
   map.addLayer(mapbox.layer().id('ekianjohnkansai.map-acek7fr6'));
