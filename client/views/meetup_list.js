@@ -3,3 +3,7 @@ Template.meetupList.helpers({
     return Meetups.find();
   }
 });
+
+Template.meetupList.rendered = function(){
+	
+};
