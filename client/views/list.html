@@ -1,7 +1,7 @@
 <template name="list">
   <ul>
   {{# each meetups}}
-    <li><a href="{{url}}">{{city}}</a></li>
+    <li><a href="{{url}}">{{city}}</a> | {{location.lat}}, {{location.lng}}</li>
   {{/each}}
   </ul>
 </template>
