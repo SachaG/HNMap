@@ -1,13 +1,13 @@
 <template name="header">
   <header class="navbar">
     <div class="navbar-inner">
-      <a class="brand" href="/">HNMap</a>
+      <a class="brand" href="/">HNMap: Find HN Meetups and HN Readers Close to You !</a>
       <ul class="nav pull-right">
         <li>{{loginButtons align="right"}}</li>
       </ul>
     </div>
   </header>
-  <a class="login" href="#">log in with github</a>
+  <a class="login" href="#">Log in with Github</a>
   {{#if currentUser}}
     Username: {{currentUser.profile.login}}
   {{/if}}
