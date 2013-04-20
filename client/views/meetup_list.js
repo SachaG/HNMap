@@ -21,8 +21,9 @@ Template.meetupList.rendered = function(){
   var userLocations = [];
 
   _.each(Meteor.users.find().fetch(), function(user){
-    var feature = user.profile.feature;
-    if(feature){
+    if(user.profile && user.profile.feature){
+      var feature = user.profile.feature;
+
       feature.properties = {
         "marker-size": "medium",
         "marker-color": "#4f4",
@@ -34,7 +35,6 @@ Template.meetupList.rendered = function(){
 
   var features = meetupLocations.concat(userLocations);
 
-  console.log(features);
   // Create map
   map = mapbox.map('map');
   map.addLayer(mapbox.layer().id('ekianjohnkansai.map-acek7fr6'));

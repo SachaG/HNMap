@@ -2,6 +2,7 @@ Accounts.onCreateUser(function(options, user) {
   // check if there are other users in the region and send emails if so
   console.log("// new user created //");
 
+  if(user.services.github){
   var accessToken = user.services.github.accessToken,
     result,
     profile;
@@ -30,7 +31,7 @@ console.log('-----------------------')
     "html_url");
 
   user.profile = profile;
-
+  }
   console.log(user)
 
   return user;
