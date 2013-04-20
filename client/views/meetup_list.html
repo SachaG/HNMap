@@ -10,6 +10,6 @@
 
 <template name="meetup">
   <li>
-    <a href="{{url}}">{{city}}</a> | {{feature.geometry.coordinates}} | <a class="delete-link" href="#"><i class="icon-trash"></i>delete</a>
+    <a class="focus-location" href="javascript:void(0)" title="focus map to location"><i class="icon-map-marker"></i>{{city}}</a> | <!--{{feature.geometry.coordinates}}--><a title="more informations" href="{{url}}"><i class="icon-info-sign"></i></a> | <a class="delete-link" href="javascript:void(0)" title="delete this event !"><i class="icon-trash"></i>delete</a>
   </li>
 </template>

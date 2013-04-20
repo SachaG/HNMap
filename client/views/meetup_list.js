@@ -47,12 +47,23 @@ Template.meetupList.helpers({
     return list;
   }
 });
-Deps.autorun(function () {
-  Meteor.subscribe("counts-by-room", Session.get("coordinates"));
-});
+
 Template.meetup.events({
   "click .delete-link": function(event, instance){
     event.preventDefault();
     Meetups.remove(instance.data._id);
+  },
+  "click .focus-location":function(event, instance) {
+    event.preventDefault();
+    console.log(instance);
+    var lat=instance.data.feature.geometry.coordinates[0];
+    var lng=instance.data.feature.geometry.coordinates[1];
+    map.centerzoom({
+      lat: lat,
+      lon: lng
+    }, 5);
+    $('html, body').animate({
+      scrollTop: $("#map").offset().top
+    }, "fast");
   }
 });
