@@ -1,4 +1,4 @@
-Template.addMeetup.events({
+Template.meetupSubmit.events({
   'submit form': function(event) {
     event.preventDefault();
     var meetup = {
@@ -10,6 +10,7 @@ Template.addMeetup.events({
     Meteor.http.call("GET", "http://maps.googleapis.com/maps/api/geocode/json?address="+meetup.city+","+meetup.country+"&sensor=false", function(error,result){
       console.log(result.data.results[0].geometry.location);
       meetup.location = result.data.results[0].geometry.location;
+      meetup.loc = [result.data.results[0].geometry.location.lng, result.data.results[0].geometry.location.lat];
       console.log(meetup)
       Meetups.insert(meetup);
     });

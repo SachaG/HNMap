@@ -1,4 +1,4 @@
-Template.list.helpers({
+Template.meetupList.helpers({
   meetups: function(){
     return Meetups.find();
   }
