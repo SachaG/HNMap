@@ -9,15 +9,30 @@ Template.meetupList.created = function(){
 }
 
 Template.meetupList.rendered = function(){
-  var features = _.pluck(Meetups.find().fetch(), 'feature');
+  var meetupLocations = _.pluck(Meetups.find().fetch(), 'feature');
 
   // reverse coordinates so that MapBox is happy
-  _.each(features, function(feature){
+  _.each(meetupLocations, function(feature){
     feature.geometry.coordinates = feature.geometry.coordinates.reverse();
     feature.properties["marker-size"] = "medium";
     feature.properties["marker-color"] = "#f44";
   });
 
+  var userLocations = [];
+
+  _.each(Meteor.users.find().fetch(), function(user){
+    var feature = user.profile.feature;
+    feature.properties = {
+      "marker-size": "medium",
+      "marker-color": "#4f4",
+      "city": user.profile.name
+    }
+    userLocations.push(feature);
+  });
+
+  var features = meetupLocations.concat(userLocations);
+
+  console.log(features);
   // Create map
   map = mapbox.map('map');
   map.addLayer(mapbox.layer().id('ekianjohnkansai.map-acek7fr6'));
