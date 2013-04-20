@@ -6,9 +6,9 @@ Template.meetupMap.helpers({
 
 Template.meetupMap.rendered = function(){
   if(Session.get("meetupsLoaded")){
-    console.log(Session.get("meetupsLoaded"))
+    //console.log(Session.get("meetupsLoaded"))
   Deps.autorun(function(){
-    console.log(Meetups.find().fetch())
+    //console.log(Meetups.find().fetch())
     var meetupLocations = _.pluck(Meetups.find().fetch(), 'feature');
 
     // reverse coordinates so that MapBox is happy

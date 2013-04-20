@@ -7,7 +7,8 @@ var updateUserLocation = function(lng, lat){
       }
     }
   console.log(feature);
-
+  Session.set("coordinates",[lng, lat]);
+  Template.meetupList.update();
   Meteor.users.update(Meteor.userId(), {$set: {
     "profile.loc": [lng, lat],
     "profile.feature": feature
