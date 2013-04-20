@@ -1,10 +1,15 @@
 <template name="meetupList">
 
-<div id='map'></div>
+<ul>
+{{# each meetups}}
+  {{> meetup}}
+{{/each}}
+</ul>
 
-  <ul>
-  {{# each meetups}}
-    <li><a href="{{url}}">{{city}}</a> | {{location.lat}}, {{location.lng}}</li>
-  {{/each}}
-  </ul>
+</template>
+
+<template name="meetup">
+  <li>
+    <a href="{{url}}">{{city}}</a> | {{feature.geometry.coordinates}} | <a class="delete-link" href="#">delete</a>
+  </li>
 </template>
