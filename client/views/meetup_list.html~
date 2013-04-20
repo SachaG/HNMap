@@ -1,0 +1,7 @@
+<template name="meetupList">
+  <ul>
+  {{# each meetups}}
+    <li><a href="{{url}}">{{city}}</a> | {{location.lat}}, {{location.lng}}</li>
+  {{/each}}
+  </ul>
+</template>
