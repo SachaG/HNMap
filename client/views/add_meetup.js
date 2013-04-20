@@ -7,10 +7,10 @@ Template.addMeetup.events({
       city: $(event.target).find('[name=city]').val()
     }
 
-    Meetups.insert(meetup);
+    // Meetups.insert(meetup);
     
-    // Meteor.call('meetup', meetup, function(error, id) {
-    //   console.log(error);
-    // });
+    Meteor.call('addMeetup', meetup, function(error, id) {
+      console.log(error);
+    });
   }
 });
