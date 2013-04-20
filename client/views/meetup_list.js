@@ -66,3 +66,10 @@ Template.meetupList.rendered = function(){
   // Attribute map
   map.ui.attribution.add().content('<a href="http://mapbox.com/about/maps">Terms &amp; Feedback</a>');
 };
+
+Template.meetup.events({
+  "click .delete-link": function(event, instance){
+    event.preventDefault();
+    Meetups.remove(instance.data._id);
+  }
+});
