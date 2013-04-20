@@ -22,12 +22,14 @@ Template.meetupList.rendered = function(){
 
   _.each(Meteor.users.find().fetch(), function(user){
     var feature = user.profile.feature;
-    feature.properties = {
-      "marker-size": "medium",
-      "marker-color": "#4f4",
-      "city": user.profile.name
+    if(feature){
+      feature.properties = {
+        "marker-size": "medium",
+        "marker-color": "#4f4",
+        "city": user.profile.name
+      }
+      userLocations.push(feature);
     }
-    userLocations.push(feature);
   });
 
   var features = meetupLocations.concat(userLocations);
