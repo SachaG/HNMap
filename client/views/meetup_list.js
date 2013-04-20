@@ -19,7 +19,7 @@ Template.meetupList.rendered = function(){
   });
 
   // Create map
-  var map = mapbox.map('map');
+  map = mapbox.map('map');
   map.addLayer(mapbox.layer().id('ekianjohnkansai.map-acek7fr6'));
 
   // Create and add marker layer

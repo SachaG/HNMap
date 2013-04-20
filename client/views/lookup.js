@@ -1,11 +1,33 @@
+var updateUserLocation = function(lng, lat){
+
+  var feature = {        
+    "geometry": {
+          "type": "Point",
+          "coordinates": [lng, lat]
+      }
+    }
+  console.log(feature);
+
+  Meteor.users.update(Meteor.userId(), {$set: {
+    "profile.loc": [lng, lat],
+    "profile.feature": feature
+  }});  
+}
+
 Template.lookup.events({
   "click .lookup":function(event){
     Meteor.http.call("GET", "http://maps.googleapis.com/maps/api/geocode/json?address="+$("#lookup_address").val()+"&sensor=false",
       function(error,result) {
         console.log(result);
-        var latitude=result.data.results[0].geometry.location.lat;
-        var longitude=result.data.results[0].geometry.location.lng;
-        //TODO action
+        var lat=result.data.results[0].geometry.location.lat;
+        var lng=result.data.results[0].geometry.location.lng;
+
+        updateUserLocation(lng, lat);
+        map.centerzoom({
+          lat: lat,
+          lon: lng
+        }, 5);
+
       }
     );
   },
@@ -13,6 +35,13 @@ Template.lookup.events({
     console.log("geolocation");
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
+        var lng = position.coords.longitude,
+            lat = position.coords.latitude;
+        updateUserLocation(lng, lat);
+        map.centerzoom({
+          lat: lat,
+          lon: lng
+        }, 5);
         //Session.set("latitude",position.coords.latitude);
         //Session.set("longitude",position.coords.longitude);
         Meteor.http.call("GET","http://maps.googleapis.com/maps/api/geocode/json?latlng="+
