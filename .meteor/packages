@@ -7,7 +7,6 @@ autopublish
 insecure
 preserve-inputs
 accounts-ui
-accounts-password
 bootstrap
 http
 accounts-github
