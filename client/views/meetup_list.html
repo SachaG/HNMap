@@ -1,11 +1,11 @@
 <template name="meetupList">
-
-<ul>
-{{# each meetups}}
-  {{> meetup}}
-{{/each}}
-</ul>
-
+  <div class="span8 well meetup-list">
+    <ul>
+    {{# each meetups}}
+      {{> meetup}}
+    {{/each}}
+    </ul>
+  </div>
 </template>
 
 <template name="meetup">
