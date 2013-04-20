@@ -23,12 +23,12 @@ Template.meetupList.helpers({
     currentCoordDep.depend();
   	var list=Meetups.find().fetch();
   	var coordinates=Session.get("coordinates");
-    console.log(typeof(coordinates));
+    //console.log(typeof(coordinates));
   	if(typeof(coordinates)!="undefined") {
-      console.log("sort");
+      //console.log("sort");
   		var lat=coordinates[1];
   		var lng=coordinates[0];
-      console.log(list);
+      //console.log(list);
   		list=list.sort(function(a,b) {
   			var lat_a=a.feature.geometry.coordinates[0];
   			var lng_a=a.feature.geometry.coordinates[1];
@@ -42,7 +42,7 @@ Template.meetupList.helpers({
         if(dist_a>dist_b){return 1;}
         return 0;
   		});
-      console.log(list);
+      //console.log(list);
   	}
     return list;
   }
