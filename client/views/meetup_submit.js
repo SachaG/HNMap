@@ -24,11 +24,5 @@ Template.meetupSubmit.events({
 
       Meetups.insert(meetup);
     });
-
-
-    
-    // Meteor.call('addMeetup', meetup, function(error, id) {
-    //   console.log(error);
-    // });
   }
 });
